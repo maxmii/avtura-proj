@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 
-src/data/stands.json
+public/data/stands.json

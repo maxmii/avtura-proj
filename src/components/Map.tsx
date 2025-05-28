@@ -1,5 +1,5 @@
 import { Map, Overlay } from "pigeon-maps";
-import { Stage, Layer, Rect, Circle, Line } from "react-konva";
+import { Stage, Layer, Rect } from "react-konva";
 
 export function MyMap() {
   return (
