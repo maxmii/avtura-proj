@@ -1,0 +1,132 @@
+.stand-box {
+  background: #d6eafd;
+  border: 2px solid #333;
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  box-shadow: none;
+  opacity: 1;
+  font-family: Arial, sans-serif;
+  overflow: visible;
+}
+
+.stand-center-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #ffe600;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.stand-id {
+  position: absolute;
+  left: 35%;
+  top: 70%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-size: 13px;
+  color: #222;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: 1px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.stand-box.facing-north .stand-arrow {
+  transform: translateX(-50%) rotate(0deg);
+}
+.stand-box.facing-east .stand-arrow {
+  transform: translateX(-50%) rotate(90deg);
+}
+.stand-box.facing-south .stand-arrow {
+  transform: translateX(-50%) rotate(180deg);
+}
+.stand-box.facing-west .stand-arrow {
+  transform: translateX(-50%) rotate(270deg);
+}
+
+.stand-arrow.facing-north .stand-arrow-label {
+  transform: rotate(0deg) !important;
+}
+.stand-arrow.facing-east .stand-arrow-label {
+  transform: rotate(-90deg) !important;
+}
+.stand-arrow.facing-south .stand-arrow-label {
+  transform: rotate(-180deg) !important;
+}
+.stand-arrow.facing-west .stand-arrow-label {
+  transform: rotate(-270deg) !important;
+}
+
+.stand-arrow {
+  position: relative;
+  margin: 0 6px 0 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.stand-arrow.facing-north,
+.stand-arrow.facing-south {
+  margin: 6px 0 6px 0;
+}
+
+.stand-arrow.facing-north {
+  transform: rotate(0deg);
+}
+.stand-arrow.facing-east {
+  transform: rotate(90deg);
+}
+.stand-arrow.facing-south {
+  transform: rotate(180deg);
+}
+.stand-arrow.facing-west {
+  transform: rotate(270deg);
+}
+
+.stand-arrow-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: -2px;
+  letter-spacing: 1px;
+  display: inline-block;
+  transform: rotate(-0deg) !important;
+  writing-mode: horizontal-tb !important;
+  position: relative;
+}
+
+.stand-arrow-line {
+  width: 2px;
+  height: 14px;
+  background: #222;
+  margin: 0 auto;
+  display: block;
+}
+
+.stand-arrow-icon {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 16px solid #222;
+  margin-top: -2px;
+}
+
+.stand-north-arrow,
+.stand-north-arrow-label,
+.stand-north-arrow-line,
+.stand-north-arrow-icon {
+  display: none !important;
+}

@@ -1,23 +1,48 @@
-import { Map, Overlay } from "pigeon-maps";
-import { Stage, Layer, Rect } from "react-konva";
+import {useState, useEffect} from 'react';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import {getStands} from '../hooks/getStands';
+import type {IStands} from '../interfaces/stands.interface';
+import {getAverageCoordinates} from '../hooks/getAverage';
+import Map from 'react-map-gl/mapbox';
+import './Components.css';
+import {StandBox} from './StandBox';
 
 export function MyMap() {
+  const [stands, setStands] = useState<IStands[]>([]);
+
+  const mapBoxApi = import.meta.env.VITE_MAPBOX_API;
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await getStands();
+        setStands(data);
+      } catch (error: unknown) {
+        console.error('Failed to fetch data', error);
+      }
+    };
+
+    getData();
+  }, [stands]);
+
+  const {lat, long} = getAverageCoordinates(stands);
+
+  if (!stands.length) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <Map
-        height={window.innerHeight}
-        width={window.innerWidth}
-        defaultCenter={[50.879, 4.6997]}
-        defaultZoom={11}
-      >
-        <Overlay anchor={[50.879, 4.6997]}>
-          <Stage width={window.innerWidth} height={window.innerHeight}>
-            <Layer>
-              <Rect x={20} y={20} width={100} height={100} fill="red" />
-            </Layer>
-          </Stage>
-        </Overlay>
-      </Map>
-    </div>
+    <Map
+      mapboxAccessToken={mapBoxApi}
+      initialViewState={{
+        longitude: long,
+        latitude: lat,
+        zoom: 8,
+      }}
+      mapStyle="mapbox://styles/mapbox/streets-v9"
+    >
+      {stands.map((stand: IStands) => {
+        return <StandBox {...stand} />;
+      })}
+    </Map>
   );
 }
