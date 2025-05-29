@@ -1,13 +1,13 @@
-import {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import {getStands} from '../hooks/getStands';
-import type {IStands} from '../interfaces/stands.interface';
-import {getAverageCoordinates} from '../hooks/getAverage';
 import Map from 'react-map-gl/mapbox';
+import { getStands } from '../hooks/getStands';
+import { getAverageCoordinates } from '../hooks/getAverageCoordinates';
+import type { IStands } from '../interfaces/stands.interface';
+import { StandBox } from './StandBox';
 import './Components.css';
-import {StandBox} from './StandBox';
 
-export function MyMap() {
+export function MyMap(): React.ReactElement {
   const [stands, setStands] = useState<IStands[]>([]);
 
   const mapBoxApi = import.meta.env.VITE_MAPBOX_API;

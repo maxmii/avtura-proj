@@ -12,8 +12,9 @@ export function getDirection(standFacing: string): string {
     case Direction.West:
       arrowLabel = 'west';
       break;
-    default:
+    case Direction.North:
       arrowLabel = 'north';
+      break;
   }
 
   return arrowLabel;

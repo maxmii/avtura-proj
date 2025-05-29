@@ -1,3 +1,4 @@
+import axios from 'axios';
 import type {
   IStands,
   IStandsResponseData,
@@ -5,10 +6,9 @@ import type {
 
 export async function getStands(): Promise<IStands[]> {
   try {
-    const response = await fetch('/data/stands.json');
-    const data = await response.json();
+    const res = await axios.get('/data/stands.json');
 
-    const stands: IStands[] = Object.entries(data).map(
+    const stands: IStands[] = Object.entries(res.data).map(
       ([standId, standData]: [string, unknown]) => {
         const stand = standData as IStandsResponseData;
 
@@ -20,7 +20,7 @@ export async function getStands(): Promise<IStands[]> {
           boxLength: stand.box_length,
           boxWidth: stand.box_width,
         };
-      }
+      },
     );
     return stands;
   } catch (error) {
