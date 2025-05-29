@@ -1,4 +1,4 @@
-import {getDirection} from '../../src/hooks/getDirection';
+import getDirection from '../../src/hooks/getDirection';
 
 describe('getDirection', () => {
   it('should return the south if S', () => {

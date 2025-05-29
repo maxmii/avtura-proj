@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Map from 'react-map-gl/mapbox';
-import { getStands } from '../hooks/getStands';
-import { getAverageCoordinates } from '../hooks/getAverageCoordinates';
-import type { IStands } from '../interfaces/stands.interface';
-import { StandBox } from './StandBox';
+import getStands from '../hooks/getStands';
+import getAverageCoordinates from '../hooks/getAverageCoordinates';
+import type {IStands} from '../interfaces/stands.interface';
+import {StandBox} from './StandBox';
 import './Components.css';
 
 export function MyMap(): React.ReactElement {
-  const [stands, setStands] = useState<IStands[]>([]);
 
+  /* Set stands using the getStands hook
+   Using useEffect asynchronously to set it
+   If stands are empty will show Loading 
+   If not it will show the mapbox and then map the stands
+   to create a marker for each stand
+  */
+  const [stands, setStands] = useState<IStands[]>([]);
   const mapBoxApi = import.meta.env.VITE_MAPBOX_API;
   useEffect(() => {
     const getData = async () => {

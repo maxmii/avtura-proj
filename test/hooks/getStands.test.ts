@@ -1,4 +1,4 @@
-import {getStands} from '../../src/hooks/getStands';
+import getStands from '../../src/hooks/getStands';
 import axios from 'axios';
 
 jest.mock('axios');

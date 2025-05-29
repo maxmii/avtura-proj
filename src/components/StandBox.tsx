@@ -12,6 +12,8 @@ export function StandBox({
   boxWidth,
   boxLength,
 }: IStands): React.ReactElement {
+
+  // Return a stand box 
   return (
     <Marker key={id} longitude={long} latitude={lat} anchor="center">
       <div
@@ -27,6 +29,7 @@ export function StandBox({
           <Arrow standFacing={standFacing} />
         )}
         <div
+          key={id}
           className={`stand-box`}
           style={{
             width: `${boxWidth}px`,

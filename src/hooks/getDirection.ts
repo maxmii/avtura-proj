@@ -1,6 +1,8 @@
 import {Direction} from '../enums/direction.enum';
 
-export function getDirection(standFacing: string): string {
+
+//Return direction using enums for class name
+export default function getDirection(standFacing: string): string {
   let arrowLabel = '';
   switch (standFacing.toUpperCase()) {
     case Direction.South:

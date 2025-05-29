@@ -1,4 +1,4 @@
-import {getAverageCoordinates} from '../../src/hooks/getAverageCoordinates';
+import getAverageCoordinates from '../../src/hooks/getAverageCoordinates';
 import {IStands} from '../../src/interfaces/stands.interface';
 
 describe('getAverageCoordinates', () => {

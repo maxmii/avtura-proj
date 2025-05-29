@@ -4,7 +4,13 @@ import type {
   IStandsResponseData,
 } from '../interfaces/stands.interface';
 
-export async function getStands(): Promise<IStands[]> {
+
+/* Return the stands using axios to get the data 
+  using local file but would use a live api in a real product
+  Maps the data to a IStands array and assign the number as the id
+  Will try to retrieve using async if not will throw an error
+*/
+export default async function getStands(): Promise<IStands[]> {
   try {
     const res = await axios.get('/data/stands.json');
 
@@ -16,7 +22,7 @@ export async function getStands(): Promise<IStands[]> {
           id: standId,
           lat: stand.lat,
           long: stand.long,
-          standFacing: stand.stand_facing.toLocaleUpperCase(),
+          standFacing: stand.stand_facing.toUpperCase(), //Uppercase just in case standFacing in uppercase
           boxLength: stand.box_length,
           boxWidth: stand.box_width,
         };
