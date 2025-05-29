@@ -22,7 +22,7 @@ export function MyMap() {
     };
 
     getData();
-  }, [stands]);
+  }, []);
 
   const {lat, long} = getAverageCoordinates(stands);
 
